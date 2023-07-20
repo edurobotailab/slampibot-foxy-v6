@@ -52,7 +52,7 @@ class BringUp(Node):
     def __init__(self):
         super().__init__('bring_up')    
         
-        self.pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=5.0)    
+        self.pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=6.0)    
         self.pico_serial.reset_input_buffer() 
         self.pico_serial.reset_output_buffer() 
         
@@ -90,7 +90,7 @@ class BringUp(Node):
 
     def cbCmdVelMsg(self, cmd_vel_msg):     
         
-        self.pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=5.0)        
+        self.pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=6.0)        
         self.pico_serial.reset_input_buffer() 
         self.pico_serial.reset_output_buffer() 
                 
@@ -170,7 +170,7 @@ class BringUp(Node):
                     
     def update_robot(self):
         
-        self.pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=5.0) 
+        self.pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=6.0) 
         self.pico_serial.reset_input_buffer() 
         self.pico_serial.reset_output_buffer() 
                
@@ -334,7 +334,7 @@ def main(args=None):
     except KeyboardInterrupt:
         bringup_node.get_logger().info('keyboard Interrupt')
     finally:
-        pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=5.0)             
+        pico_serial = serial.Serial(port="/dev/ttyACM0", baudrate=115200, timeout=6.0)             
         pico_serial.reset_input_buffer() 
         pico_serial.reset_output_buffer() 
         pico_serial.write("motor_r.stop({0:1f})\r".format(abs(0.0)).encode("utf-8"))
